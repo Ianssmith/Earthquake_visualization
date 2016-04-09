@@ -21,6 +21,11 @@ function setup() {
 
   createCanvas(windowWidth, windowHeight);
   clear();
+}
+
+function draw() {
+  noLoop();
+  smooth();
   background(0);
   latitude = table.getColumn("latitude");
   longitude = table.getColumn("longitude");
@@ -51,18 +56,19 @@ function setup() {
     timek[i] = int(timek[i]);
     timek[i] = map(timek[i], 0, 30, 255, 0)
 
-R[i] = color(timek[i], 30, 30, timek[i]);
-B[i] = color(30, 30, time[i], timek[i]);
+
+
+    R[i] = color(timek[i], 30, 30, timek[i]);
+    B[i] = color(30, 30, time[i], timek[i]);
+
   }
 
-// console.log(table.getRowCount())
-// console.log(max(longitude))
-  smooth();
-  for (var j = 0; j < table.getRowCount(); j++) {
-    
 
-var Color1 = lerpColor(R[j], B[j], 0.25);
-var Color2 = lerpColor(R[j], B[j], 0.75);
+  for (var j = 0; j < table.getRowCount(); j++) {
+
+
+    var Color1 = lerpColor(R[j], B[j], 0.25);
+    var Color2 = lerpColor(R[j], B[j], 0.75);
 
 
     strokeWeight(1.5);
@@ -80,18 +86,24 @@ var Color2 = lerpColor(R[j], B[j], 0.75);
       line(longitude[j], latitude[j], longitude[j] - 19, latitude[j]);
 
 
-    } 
+    }
   }
   strokeWeight(0.75);
   stroke(255);
-  line(windowWidth/2,0,windowWidth/2,windowHeight);
-  line(0,windowHeight/2,windowWidth,windowHeight/2);
+  line(windowWidth / 2, 0, windowWidth / 2, windowHeight);
+  line(0, windowHeight / 2, windowWidth, windowHeight / 2);
   noStroke();
   textFont("Courier New")
-  textAlign(LEFT,TOP)
+  textAlign(LEFT, TOP)
   fill(255)
-  text("Prime-Meridian",windowWidth/2,0);
-  text("Equator",0,windowHeight/2 );
+  text("Prime-Meridian", windowWidth / 2, 0);
+  text("Equator", 0, windowHeight / 2);
 
 }
 
+
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  redraw();
+}
