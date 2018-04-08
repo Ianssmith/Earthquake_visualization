@@ -13,7 +13,7 @@ var B = [];
 
 
 function preload() {
-  table = loadTable("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv", "csv", "header");
+  table = loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv", "csv", "header");
 }
 
 
